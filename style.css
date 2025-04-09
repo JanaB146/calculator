@@ -1,0 +1,98 @@
+* {
+    font-family: sans-serif;
+}
+body {
+    background-color: rgb(72, 65, 65);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin:auto;
+    height:vh;
+}
+
+#großer-rahmen {
+    height:582px;
+    width:400px;
+    border:solid transparent 1px;
+    border-radius: 8px;
+    background-color: rgb(227, 221, 221);
+}
+#erste-reihe {
+    height:40px;
+    margin-top:5px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+#bild-und-rechner {
+    width:130px;
+    display: flex;
+    justify-content:space-around;
+
+}
+#icons {
+    width:130px;
+    display: flex;
+    justify-content: space-around;
+}
+
+#zweite-reihe {
+    display: flex;
+    height:80px;
+    margin-top:10px;
+    justify-content: space-between;
+    align-items: center;
+}
+#standard-links {
+    width:180px;
+    display: flex;
+    justify-content:space-around;
+}
+#uhr {
+    display:flex;
+    justify-content: flex-end;
+    margin-right:15px;
+}
+#dritte-reihe {
+    height:90px;
+    border: solid black 3px;
+    border-radius: 5px;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+}
+#zahlen {
+    font-size:4rem;
+    margin-right:10px;
+}
+.erster-container {
+    display: grid;
+    grid-template-columns:1fr 1fr 1fr 1fr 1fr 1fr;
+    grid-template-rows: 50px;
+    
+}
+.erster-container > div {
+    margin-top:25px;
+    display: flex;
+    justify-content: center;
+}
+.container {
+    display: grid;
+    grid-template-columns:1fr 1fr 1fr 1fr;
+    grid-template-rows: 50px 50px 50px 50px 50px 50px;
+    
+}
+.container > div {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: white;
+    box-shadow: 1px 1px 1px 1px rgb(189, 186, 186);
+    margin: 3px;
+    font-size: 1.1rem;
+    border-radius: 5px;
+}
+#schwarz {
+    color:white;
+    background-color: #333;
+}
