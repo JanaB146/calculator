@@ -39,32 +39,9 @@ function myFunction(button) {
 function calculate(expression) {
     expression = expression.replace(/x/g, "*").replace(/÷/g, "/").replace(/−/g, "-").replace(/,/g, ".");
 
-    //Wurzel
-    while (expression.includes("√")) {
-        const wurzelRegex = /√(\d+(\.\d+)?)/;
-        const match = expression.match(wurzelRegex);
-        if (match) {
-            let inside = match[1];
-            let value = parseFloat(inside);
-            let result = wurzel(value);
-            expression = expression.replace(wurzelRegex, result);
-        } else {
-            return "Fehler: Ungültige Wurzel";
-        }
-    }
-    //Quadrat
-    while (expression.includes("²")) {
-        const quadratRegex = /(\d+(\.\d+)?)²/;
-        const match = expression.match(quadratRegex);
-        if (match) {
-            let inside = match[1];
-            let value = parseFloat(inside);
-            let result = quadrat(value);
-            expression = expression.replace(match[0], result);
-        } else {
-            return "Fehler: Ungültig";
-        }
-    }
+    expression = handleWurzeln(expression);
+    expression = handleQuadrate(expression);
+    expression = handleProzent(expression);
 
     const tokens = expression.match(/(\d+(\.\d+)?|[+\-*/])/g);
     if (!tokens) return "Fehler";
@@ -99,10 +76,21 @@ function calculate(expression) {
     return tokens[0];
 }
 
-function quadrat(x) {
-    return x * x;
+function handleWurzeln(expression) {
+    while (expression.includes("√")) {
+        const wurzelRegex = /√(\d+(\.\d+)?)/;
+        const match = expression.match(wurzelRegex);
+        if (match) {
+            let inside = match[1];
+            let value = parseFloat(inside);
+            let result = wurzel(value);
+            expression = expression.replace(wurzelRegex, result);
+        } else {
+            return "Fehler: Ungültige Wurzel";
+        }
+    }
+    return expression;
 }
-
 function wurzel(x) {
     if (x < 0) return "Fehler: √ aus negativer Zahl";
     
@@ -115,4 +103,34 @@ function wurzel(x) {
     } while (Math.abs(prevGuess - guess) > 0.00001);
 
     return guess;
+}
+
+function handleQuadrate(expression) {
+    while (expression.includes("²")) {
+        const quadratRegex = /(\d+(\.\d+)?)²/;
+        const match = expression.match(quadratRegex);
+        if (match) {
+            let inside = match[1];
+            let value = parseFloat(inside);
+            let result = quadrat(value);
+            expression = expression.replace(match[0], result);
+        } else {
+            return "Fehler: Ungültiges Quadrat";
+        }
+    }
+    return expression;
+}
+function quadrat(x) {
+    return x * x;
+}
+
+function handleProzent(expression) {
+    const prozentRegex = /(\d+(\.\d+)?)%/;
+    let match;
+    while (match = expression.match(prozentRegex)) {
+        let number = parseFloat(match[1]);
+        let percentageValue = number / 100;
+        expression = expression.replace(match[0], percentageValue);
+    }
+    return expression;
 }
