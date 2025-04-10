@@ -60,6 +60,7 @@ body {
     display: flex;
     justify-content: flex-end;
     align-items: center;
+    overflow: hidden;
 }
 #zahlen {
     font-size:4rem;
@@ -69,7 +70,6 @@ body {
     display: grid;
     grid-template-columns:1fr 1fr 1fr 1fr 1fr 1fr;
     grid-template-rows: 50px;
-    
 }
 .erster-container > div {
     margin-top:25px;
@@ -80,9 +80,8 @@ body {
     display: grid;
     grid-template-columns:1fr 1fr 1fr 1fr;
     grid-template-rows: 50px 50px 50px 50px 50px 50px;
-    
 }
-.container > div {
+.container > input {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -91,6 +90,7 @@ body {
     margin: 3px;
     font-size: 1.1rem;
     border-radius: 5px;
+    
 }
 #schwarz {
     color:white;
